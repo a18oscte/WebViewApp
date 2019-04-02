@@ -8,6 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
     // Create a private member variable that can hold our WebView
@@ -40,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
         // -- Commit and push to your github fork
         // 5. Enter the url to load in our WebView
         // -- Commit and push to your github fork
+
+        WebView myWebView = (WebView) findViewById(R.id.my_webview);
+        myWebView.loadUrl("http://wwwlab.iit.his.se/a18oscte/Mobilapplikationsdesign/projekt/");
+
+        WebSettings webSettings = myWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        myWebView.setWebChromeClient(new WebChromeClient());
+        myWebView.setWebViewClient(new WebViewClient());
+
     }
 
     @Override
