@@ -20,7 +20,9 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include
+        android:id="@+id/include2"
+        layout="@layout/content_main" />
 
     <!-- The FAB element can be removed -->
     <android.support.design.widget.FloatingActionButton
@@ -30,5 +32,11 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="275dp"
+        app:layout_anchor="@+id/include2"
+        app:layout_anchorGravity="center" />
 
 </android.support.design.widget.CoordinatorLayout>
