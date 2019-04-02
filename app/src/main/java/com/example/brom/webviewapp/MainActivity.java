@@ -15,22 +15,29 @@ import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
     // Create a private member variable that can hold our WebView
+    boolean viewa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         /* This code is run when the App is created. Include code that creates your WebView */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         // The FAB-code can be removed
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if(viewa) {
+                    WebView myWebView = (WebView) findViewById(R.id.my_webview);
+                    myWebView.loadUrl("file:///android_asset/help.html");
+                    viewa = false;
+                }else {
+                    WebView myWebView = (WebView) findViewById(R.id.my_webview);
+                    myWebView.loadUrl("http://wwwlab.iit.his.se/a18oscte/Mobilapplikationsdesign/projekt/");
+                    viewa = true;
+                }
+
             }
         });
         // 1. Create a WebView element in the layout file content_main.xml
@@ -47,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         WebView myWebView = (WebView) findViewById(R.id.my_webview);
         myWebView.loadUrl("http://wwwlab.iit.his.se/a18oscte/Mobilapplikationsdesign/projekt/");
+        //myWebView.loadUrl("file:///android_asset/help.html");
 
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
